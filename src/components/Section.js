@@ -1,25 +1,33 @@
-import React from 'react';
+import React, {forwardRef} from 'react';
 import styled from 'styled-components';
 import Link from './Link';
 import LinkWithPreview from './LinkWithPreview';
 
-const Section = ({copy, site_url, image_url, bottom, site_name}) => {
+const Section = forwardRef(({copy, site_url, image_url, bottom, site_name}, ref) => {
   return (
-    <Container>
+    <Container ref={ref}>
       <Copy>
         {copy}
         {bottom ?
-          <Bottom><Link text={bottom} href={`mailto:${bottom}`}/></Bottom> :
-          null}
+          <Bottom>
+            <Link text={bottom} href={`mailto:${bottom}`}/>
+          </Bottom> :
+          null
+        }
       </Copy>
       {site_url && image_url ?
         <Preview>
-          <LinkWithPreview image_url={image_url} link_text={site_name} link_href={site_url}/>
+          <LinkWithPreview
+            image_url={image_url}
+            link_text={site_name}
+            link_href={site_url}
+          />
         </Preview>
-        : null}
+        : null
+      }
     </Container>
   );
-};
+});
 
 export default Section;
 
@@ -31,7 +39,7 @@ const Container = styled.section`
   height: calc(100% - var(--header-height) - var(--outer-padding));
   padding: 0;
   margin-top: var(--outer-padding);
-  
+
   @media screen and (min-width: 750px) {
     flex-direction: row;
   }

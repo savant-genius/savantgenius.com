@@ -1,65 +1,53 @@
-// import React, {useCallback, useLayoutEffect, useRef, useState} from 'react';
-import React, { useRef} from 'react';
+import React, {useRef} from 'react';
 import styled from 'styled-components';
 import data from '../data.json';
 import Section from './Section';
+import useScrollDirection from '../hooks/useScrollDirection';
 
 const Content = () => {
   const works = data.works;
-  const content = useRef(null);
-  // const [, setLastScrollY] = useState(0);
-  // const [scrolling, setScrolling] = useState(false);
+  const contentContainerRef = useRef(null);
+  const sectionRefs = useRef([]);
+  sectionRefs.current = sectionRefs.current.slice(0, works.length + 1);
+  sectionRefs.current[0] = useRef();
+  const currentSectionIndex = useRef(0);
 
-  // const goToNextSection = () => {
-  //   console.log('next', content.current.scrollTop, content.current.offsetTop)
-  //   // content.current.scrollIntoView();
-  //   setLastScrollY(window.scrollY);
-  // }
-  //
-  // const goToPrevSection = () => {
-  //   console.log('prev', content.current.scrollTop, window.scrollY)
-  //   setLastScrollY(window.scrollY);
-  // }
-  //
-  // const handleScroll = useCallback(() => {
-  //   if (!scrolling) {
-  //     setScrolling(true);
-  //     const previousScroll = content.current.scrollTop;
-  //     console.log(previousScroll)
-  //     if (content.current.scrollTop > previousScroll) {
-  //       goToNextSection();
-  //     } else if (content.current.scrollTop < previousScroll) {
-  //       goToPrevSection();
-  //     }
-  //   }
-  // });
-  //
-  // useLayoutEffect(() => {
-  //   console.log('hi');
-  //   content.current.scrollY = '100px';
-  //   content.current.addEventListener('scroll', handleScroll);
-  //   // return () => content.current.removeEventListener('scroll', handleScroll);
-  // }, [handleScroll]);
+  const goToNextSection = () => {
+    currentSectionIndex.current = Math.min(currentSectionIndex.current + 1,
+      sectionRefs.current.length - 1);
+    sectionRefs.current[currentSectionIndex.current].scrollIntoView(
+      {behavior: 'smooth'});
+  };
+
+  const goToPrevSection = () => {
+    currentSectionIndex.current = Math.max(currentSectionIndex.current - 1, 0);
+    sectionRefs.current[currentSectionIndex.current].scrollIntoView(
+      {behavior: 'smooth'});
+  };
+
+  useScrollDirection(contentContainerRef, goToNextSection, goToPrevSection);
 
   return (
-    <Container ref={content}>
+    <Container ref={contentContainerRef}>
       <Section
+        ref={element => sectionRefs.current[0] = element}
         copy={data.description}
         bottom={data.contact_email}
       />
-      {works.map(section => (
+      {works.map((section, index) => (
         <Section
           name={section.id}
           key={section.id}
-          copy={section.copy }
+          ref={element => sectionRefs.current.push(element)}
+          copy={section.copy}
           image_url={section.image}
           site_url={section.url}
           site_name={section.link}
         />
       ))}
     </Container>
-  )
-}
+  );
+};
 
 export default Content;
 
