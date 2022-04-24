@@ -37,8 +37,8 @@ const Content = () => {
     console.log('hi');
     content.current.scrollY = '100px';
     content.current.addEventListener('scroll', handleScroll);
-    return () => content.current.removeEventListener('scroll', handleScroll);
-  }, [])
+    // return () => content.current.removeEventListener('scroll', handleScroll);
+  }, [handleScroll])
 
   return (
     <Container ref={content}>

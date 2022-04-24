@@ -8,7 +8,7 @@ const LinkWithPreview = ({link_text, link_href, image_url}) => {
       {link_text && link_href ?
         <Link text={link_text} href={link_href}/> :
         null}
-      <img className="preview-image" src={image_url}/>
+      <img className="preview-image" src={image_url} alt={link_text} />
     </Container>
   );
 };

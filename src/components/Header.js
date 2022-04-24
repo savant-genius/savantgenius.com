@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const Header = () => {
   return (
     <Container>
-      <img src="/SG_Logo.svg" />
+      <img src="/SG_Logo.svg" alt="Savant Genius" />
     </Container>
   )
 }

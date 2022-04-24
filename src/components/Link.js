@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const Link = ({ text, href }) => {
   return (
     <Container>
-      <a target="_blank" href={href}>{text}</a>
+      <a target="_blank" rel="noreferrer" href={href}>{text}</a>
       <img style={{display: "inline"}} src={"/SG_Arrow.svg"}/>
     </Container>
   )
