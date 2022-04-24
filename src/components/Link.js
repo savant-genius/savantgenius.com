@@ -5,7 +5,7 @@ const Link = ({ text, href }) => {
   return (
     <Container>
       <a target="_blank" rel="noreferrer" href={href}>{text}</a>
-      <img style={{display: "inline"}} src={"/SG_Arrow.svg"}/>
+      <img style={{display: "inline"}} src={"/SG_Arrow.svg"} alt="arrow" />
     </Container>
   )
 }
