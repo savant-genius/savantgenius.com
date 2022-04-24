@@ -6,7 +6,7 @@ import Section from './Section';
 const Content = () => {
   const works = data.works;
   const content = useRef(null);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const [, setLastScrollY] = useState(0);
   const [scrolling, setScrolling] = useState(false);
 
   const goToNextSection = () => {
