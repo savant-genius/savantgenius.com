@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useRef, useCallback} from 'react';
 import styled from 'styled-components';
 import data from '../data.json';
 import Section from './Section';
@@ -12,24 +12,24 @@ const Content = () => {
   sectionRefs.current[0] = useRef();
   const currentSectionIndex = useRef(0);
 
-  const goToNextSection = () => {
-    if (currentSectionIndex.current == sectionRefs.current.length - 1) {
+  const goToNextSection = useCallback(() => {
+    if (currentSectionIndex.current === sectionRefs.current.length - 1) {
       return;
     }
     currentSectionIndex.current = Math.min(currentSectionIndex.current + 1,
       sectionRefs.current.length - 1);
     sectionRefs.current[currentSectionIndex.current].scrollIntoView(
       {behavior: 'smooth'});
-  };
+  }, [currentSectionIndex, sectionRefs]);
 
-  const goToPrevSection = () => {
-    if (currentSectionIndex.current  == 0) {
+  const goToPrevSection = useCallback(() => {
+    if (currentSectionIndex.current === 0) {
       return;
     }
     currentSectionIndex.current = Math.max(currentSectionIndex.current - 1, 0);
     sectionRefs.current[currentSectionIndex.current].scrollIntoView(
       {behavior: 'smooth'});
-  };
+  }, [currentSectionIndex, sectionRefs]);
 
   useScrollDirection(contentContainerRef, goToNextSection, goToPrevSection);
 

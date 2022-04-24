@@ -1,4 +1,4 @@
-import {useState, useRef, useLayoutEffect} from 'react';
+import {useState, useRef, useLayoutEffect, useCallback} from 'react';
 
 export default function useScrollDirection(
   _elementRef, scrollDownHandler, scrollUpHandler) {
@@ -7,26 +7,7 @@ export default function useScrollDirection(
   const touchStartY = useRef();
   const listening = useRef(true);
 
-  useLayoutEffect(() => {
-    const element = elementRef.current;
-    element.addEventListener('touchstart', handleTouchStart, false);
-    element.addEventListener('touchend', handleTouchEnd, false);
-    element.addEventListener('wheel', handleWheel, false);
-    return () => {
-      element.removeEventListener('touchstart', handleTouchStart);
-      element.removeEventListener('touchend', handleTouchEnd);
-      element.removeEventListener('wheel', handleWheel);
-    };
-  }, []);
-
-  function pauseListening() {
-    listening.current = false;
-    setTimeout(() => {
-      listening.current = true;
-    }, 1200);
-  }
-
-  function handleWheel(event) {
+  const handleWheel = useCallback(event => {
     if (event.cancelable) {
       event.preventDefault();
     }
@@ -41,16 +22,16 @@ export default function useScrollDirection(
     } else if (event.deltaY < 0) {
       scrollUpHandler();
     }
-  }
+  }, [scrollDownHandler, scrollUpHandler]);
 
-  function handleTouchStart(event) {
+  const handleTouchStart = useCallback(event => {
     touchStartY.current = event.touches[0].clientY;
     if (event.cancelable) {
       event.preventDefault();
     }
-  }
+  }, []);
 
-  function handleTouchEnd(event) {
+  const handleTouchEnd = useCallback(event => {
     const touchEndY = event.changedTouches[0].clientY;
 
     if (event.cancelable) {
@@ -62,5 +43,24 @@ export default function useScrollDirection(
     } else if (touchEndY > touchStartY.current) {
       scrollUpHandler();
     }
+  }, [scrollDownHandler, scrollUpHandler]);
+
+  useLayoutEffect(() => {
+    const element = elementRef.current;
+    element.addEventListener('touchstart', handleTouchStart, false);
+    element.addEventListener('touchend', handleTouchEnd, false);
+    element.addEventListener('wheel', handleWheel, false);
+    return () => {
+      element.removeEventListener('touchstart', handleTouchStart);
+      element.removeEventListener('touchend', handleTouchEnd);
+      element.removeEventListener('wheel', handleWheel);
+    };
+  }, [elementRef, handleWheel, handleTouchStart, handleTouchEnd]);
+
+  function pauseListening() {
+    listening.current = false;
+    setTimeout(() => {
+      listening.current = true;
+    }, 1200);
   }
 }
