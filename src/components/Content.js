@@ -58,8 +58,8 @@ const Content = () => {
 export default Content;
 
 const Container = styled.div`
+  height: calc(80vh - var(--header-height) - (4 * var(--outer-padding)));
   margin-top: var(--header-height);
-  height: calc(100vh - var(--header-height) - (4 * var(--outer-padding)));
   padding-left: var(--outer-padding);
   padding-right: var(--outer-padding);
   overflow: scroll;
