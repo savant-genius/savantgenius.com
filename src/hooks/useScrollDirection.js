@@ -1,6 +1,7 @@
 import {useState, useRef, useLayoutEffect} from 'react';
 
-export default function useScrollDirection(_elementRef, scrollDownHandler, scrollUpHandler) {
+export default function useScrollDirection(
+  _elementRef, scrollDownHandler, scrollUpHandler) {
 
   const [elementRef] = useState(_elementRef);
   const touchStartY = useRef();
@@ -10,11 +11,11 @@ export default function useScrollDirection(_elementRef, scrollDownHandler, scrol
     const element = elementRef.current;
     element.addEventListener('touchstart', handleTouchStart, false);
     element.addEventListener('touchend', handleTouchEnd, false);
-    element.addEventListener('mousewheel', handleMousewheel, false);
+    element.addEventListener('wheel', handleWheel, false);
     return () => {
       element.removeEventListener('touchstart', handleTouchStart);
       element.removeEventListener('touchend', handleTouchEnd);
-      element.removeEventListener('mousewheel', handleMousewheel);
+      element.removeEventListener('wheel', handleWheel);
     };
   }, []);
 
@@ -25,7 +26,7 @@ export default function useScrollDirection(_elementRef, scrollDownHandler, scrol
     }, 1200);
   }
 
-  function handleMousewheel(event) {
+  function handleWheel(event) {
     if (event.cancelable) {
       event.preventDefault();
     }
@@ -36,7 +37,7 @@ export default function useScrollDirection(_elementRef, scrollDownHandler, scrol
 
     pauseListening();
     if (event.deltaY > 0) {
-      scrollDownHandler()
+      scrollDownHandler();
     } else if (event.deltaY < 0) {
       scrollUpHandler();
     }

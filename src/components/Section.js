@@ -38,7 +38,7 @@ const Container = styled.section`
   align-items: flex-start;
   height: calc(100% - var(--header-height) - var(--outer-padding));
   padding: 0;
-  margin-top: var(--outer-padding);
+  margin-bottom: calc(2 * var(--outer-padding));
 
   @media screen and (min-width: 750px) {
     flex-direction: row;
@@ -50,9 +50,18 @@ const Copy = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  
+  @media screen and (min-width: 750px) {
+    width: 50%;
+  }
 `;
 
 const Preview = styled.div`
+  @media screen and (min-width: 750px) {
+    width: 50%;
+    align-self: flex-end;
+  }
+  
   & > img {
     width: 100%;
   }

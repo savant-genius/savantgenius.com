@@ -13,6 +13,9 @@ const Content = () => {
   const currentSectionIndex = useRef(0);
 
   const goToNextSection = () => {
+    if (currentSectionIndex.current == sectionRefs.current.length - 1) {
+      return;
+    }
     currentSectionIndex.current = Math.min(currentSectionIndex.current + 1,
       sectionRefs.current.length - 1);
     sectionRefs.current[currentSectionIndex.current].scrollIntoView(
@@ -20,6 +23,9 @@ const Content = () => {
   };
 
   const goToPrevSection = () => {
+    if (currentSectionIndex.current  == 0) {
+      return;
+    }
     currentSectionIndex.current = Math.max(currentSectionIndex.current - 1, 0);
     sectionRefs.current[currentSectionIndex.current].scrollIntoView(
       {behavior: 'smooth'});
@@ -55,5 +61,5 @@ const Container = styled.div`
   height: calc(100vh - var(--header-height) - (4 * var(--outer-padding)));
   padding-left: var(--outer-padding);
   padding-right: var(--outer-padding);
-  overflow: hidden;
+  overflow: scroll;
 `;
