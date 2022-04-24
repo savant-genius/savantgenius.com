@@ -14,7 +14,14 @@
       "copy": "we recently built sites for a little league merch store",
       "url": "https://shopwesties.com",
       "link": "shopwesties.com",
-      "image": "/preview_lato.png"
+      "image": "/preview_westies.png"
+    },
+    {
+      "id": "bee",
+      "copy": "we recently built sites for a silly little word game",
+      "url": "https://savant-genius-bee.herokuapp.com",
+      "link": "savant-genius-bee.herokuapp.com",
+      "image": "/preview_bee.png"
     }
   ]
 }
