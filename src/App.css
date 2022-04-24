@@ -10,6 +10,10 @@
   --header-height: 1rem;
 }
 
+html, body {
+  height: 100%;
+}
+
 .App {
   font-size: 28px;
   font-family: Beausite;
