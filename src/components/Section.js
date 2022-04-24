@@ -36,9 +36,10 @@ const Container = styled.section`
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  height: calc(100% - var(--header-height) - var(--outer-padding));
+  height: calc(100% - var(--header-height));
   padding: 0;
   margin-bottom: calc(2 * var(--outer-padding));
+  border: 1px solid;
 
   @media screen and (min-width: 750px) {
     flex-direction: row;
