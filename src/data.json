@@ -1,0 +1,20 @@
+{
+  "description": "a teeny tiny web design studio based in Northeast LA.",
+  "contact_email": "hi@savantgenius.com",
+  "works": [
+    {
+      "id": "lato",
+      "copy": "we recently built sites for a modern hiking brand",
+      "url": "https://lato.life",
+      "link": "lato.life",
+      "image": "/preview_lato.png"
+    },
+    {
+      "id": "westies",
+      "copy": "we recently built sites for a little league merch store",
+      "url": "https://shopwesties.com",
+      "link": "shopwesties.com",
+      "image": "/preview_lato.png"
+    }
+  ]
+}
