@@ -10,8 +10,14 @@
   --header-height: 1rem;
 }
 
-html, body {
+html {
   height: 100%;
+}
+
+body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
 }
 
 .App {
