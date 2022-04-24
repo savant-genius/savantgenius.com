@@ -4,10 +4,10 @@ import styled from 'styled-components';
 const Header = () => {
   return (
     <Container>
-      <img src="/SG_Logo.svg" alt="Savant Genius" />
+      <img src="/SG_Logo.svg" alt="Savant Genius"/>
     </Container>
-  )
-}
+  );
+};
 
 export default Header;
 
@@ -18,8 +18,9 @@ const Container = styled.div`
   padding-top: var(--outer-padding);
   padding-left: var(--outer-padding);
   padding-right: var(--outer-padding);
+  margin-bottom: var(--outer-padding);
   background-color: var(--background-color);
-  
+
   & > img {
     width: 100%;
     @media screen and (min-width: 750px) {
