@@ -39,7 +39,6 @@ const Container = styled.section`
   height: calc(100% - var(--header-height));
   padding: 0;
   margin-bottom: calc(2 * var(--outer-padding));
-  scroll-margin-bottom: calc(2 * var(--outer-padding));
 
   @media screen and (min-width: 750px) {
     flex-direction: row;

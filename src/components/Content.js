@@ -1,4 +1,4 @@
-import React, {useRef, useCallback} from 'react';
+import React, {useRef, useCallback, useEffect} from 'react';
 import styled from 'styled-components';
 import data from '../data.json';
 import Section from './Section';
@@ -11,6 +11,10 @@ const Content = () => {
   sectionRefs.current = sectionRefs.current.slice(0, works.length + 1);
   sectionRefs.current[0] = useRef();
   const currentSectionIndex = useRef(0);
+
+  useEffect(() => {
+    sectionRefs.current[0].scrollIntoView({behavior: 'smooth'});
+  });
 
   const goToNextSection = useCallback(() => {
     if (currentSectionIndex.current === sectionRefs.current.length - 1) {
