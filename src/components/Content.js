@@ -1,4 +1,4 @@
-import React, {useRef, useCallback, useEffect} from 'react';
+import React, {useRef, useCallback} from 'react';
 import styled from 'styled-components';
 import {Work} from './Work';
 import useScrollDirection from '../hooks/useScrollDirection';
@@ -29,7 +29,7 @@ export const Content = ({works, switchIndex}) => {
     sectionRefs.current[sectionIndexRef.current].scrollIntoView({
       behavior: 'smooth'
     });
-  }, [sectionIndexRef, sectionRefs]);
+  }, [sectionIndexRef, sectionRefs, switchIndex]);
 
   useScrollDirection(contentContainerRef, goToNextSection, goToPrevSection);
 
