@@ -1,18 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Link = ({text, href}) => {
+export const Link = ({text, href}) => {
   return (
     <Container>
       <a target="_blank" rel="noreferrer" href={href}>{text}</a>
-      <img style={{display: 'inline'}} src={'/SG_Arrow.svg'} alt="arrow"/>
     </Container>
   );
 };
 
-export default Link;
-
 const Container = styled.div`
+  font-size: 0.8em;
+
   & > img {
     display: inline;
     height: 1rem;

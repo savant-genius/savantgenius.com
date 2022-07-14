@@ -6,7 +6,7 @@
 :root {
   --background-color: #FFFFFF;
   --text-color: #000000;
-  --outer-padding: 1em;
+  --outer-padding: 0.5em;
   --header-height: 1rem;
 }
 
@@ -18,26 +18,31 @@ body {
   height: 100%;
   padding: 0;
   margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .App {
-  font-size: 24px;
+  font-size: 36px;
   font-family: Beausite;
   text-align: left;
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 @media screen and (min-width: 750px) {
   .App {
-    font-size: 36px;
+    font-size: 64px;
   }
 }
 
 a {
   display: inline;
   color: currentColor;
-  text-decoration: none;
+}
+
+.icon svg {
+  height: 0.7em;
 }

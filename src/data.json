@@ -1,26 +1,28 @@
 {
-  "description": "a teeny tiny web design studio based in Northeast LA.",
+  "description": "A teeny tiny web design studio based in Northeast LA",
   "contact_email": "hi@savantgenius.com",
+  "front_page_image": "/SG_Bleachers.png",
+  "link_to_works_text": "Our Work",
   "works": [
     {
       "id": "lato",
-      "copy": "we recently built sites for a modern hiking brand",
+      "copy": "We recently built sites for a modern hiking brand,",
       "url": "https://lato.life",
       "link": "lato.life",
       "image": "/preview_lato.png"
     },
     {
       "id": "westies",
-      "copy": "we recently built sites for a little league merch store",
+      "copy": "We recently built sites for a little league merch store,",
       "url": "https://shopwesties.com",
       "link": "shopwesties.com",
       "image": "/preview_westies.png"
     },
     {
       "id": "bee",
-      "copy": "we recently built sites for a silly little word game",
-      "url": "https://savant-genius-bee.herokuapp.com",
-      "link": "savant-genius-bee.herokuapp.com",
+      "copy": "We recently built sites for a silly little word game,",
+      "url": "https://savant-genius-bee.netlify.app",
+      "link": "spellmybee.com",
       "image": "/preview_bee.png"
     }
   ]
