@@ -23,5 +23,8 @@ const Container = styled.div`
     @media screen and (min-width: 750px) {
       width: 50%;
     }
+    @media screen and (max-height: 500px) {
+      width: 50%;
+    }
   }
 `;
