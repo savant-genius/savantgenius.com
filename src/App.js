@@ -4,6 +4,7 @@ import data from './data.json';
 import {Header} from './components/Header';
 import {Content} from './components/Content';
 import {Home} from './components/Home';
+import Div100vh from 'react-div-100vh';
 
 function App() {
 
@@ -18,7 +19,7 @@ function App() {
   }, [setWorksIndex]);
 
   return (
-    <div className="App">
+    <Div100vh className="App">
       <Header handleClick={handleBackHome}/>
       {worksIndex===null
         ? <Home
@@ -33,7 +34,7 @@ function App() {
           switchIndex={switchIndex}
         />
       }
-    </div>
+    </Div100vh>
   );
 }
 
