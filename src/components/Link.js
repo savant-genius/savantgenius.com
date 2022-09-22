@@ -2,9 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 
 export const Link = ({children, href}) => {
+
+  const onTouch = () => {
+    window.open(href, '_blank');
+  }
+
   return (
     <Container>
-      <a target="_blank" rel="noreferrer" href={href}>{children}</a>
+      <a onTouchEnd={onTouch} target="_blank" rel="noreferrer" href={href}>
+        {children}
+      </a>
     </Container>
   );
 };
