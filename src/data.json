@@ -13,14 +13,14 @@
     },
     {
       "id": "westies",
-      "copy": "We recently built sites for a little league merch store,",
+      "copy": "a little league merch store,",
       "url": "https://shopwesties.com",
       "link": "shopwesties.com",
       "image": "/preview_westies.png"
     },
     {
       "id": "bee",
-      "copy": "We recently built sites for a silly little word game,",
+      "copy": "and a silly little word game.",
       "url": "https://savant-genius-bee.netlify.app",
       "link": "spellmybee.com",
       "image": "/preview_bee.png"
